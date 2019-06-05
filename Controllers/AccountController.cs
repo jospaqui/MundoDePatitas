@@ -20,5 +20,15 @@ namespace MundoDePatitas.Controllers
       //TODO: Implement Realistic Implementation
       return View();
     }
+    public IActionResult Confirmacion()
+    {
+      //TODO: Implement Realistic Implementation
+      return View();
+    }
+    public IActionResult RecuperarContraseña()
+    {
+      //TODO: Implement Realistic Implementation
+      return View();
+    }
     }
 }
