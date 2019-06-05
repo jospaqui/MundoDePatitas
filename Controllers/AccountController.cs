@@ -11,21 +11,18 @@ namespace MundoDePatitas.Controllers
 {
     public class AccountController:Controller
     {
+      private MascotaContext _context; //el contexto 
+
+      public AccountController (MascotaContext c){ //el constructor del contexto
+            _context = c;
+
+      }
   
- 
- 
     public IActionResult RecuperarContraseña()
     {
       //TODO: Implement Realistic Implementation
       return View();
     }
-
-     private MascotaContext _context; //el contexto 
-
-        public AccountController (MascotaContext c){ //el constructor del contexto
-            _context = c;
-
-        }
 
         //ESTA ES LA FICHA DE REGISTRO
         public IActionResult RegistroUsuarios(){
