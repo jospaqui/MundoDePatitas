@@ -1,0 +1,30 @@
+@model List<Mascota>
+
+<h1>Mascotas para adopcion</h1>
+
+<form asp-action="Mascotas" method = "get">
+    filtrar por tipo mascota:
+    <select name="tipomascota">
+        <option value="0">Todas las mascotas</option>
+        @foreach (var t in (List<TipoMascota>)ViewBag.tipos)
+        {
+            <option value="@t.Id">@t.Nombre</option>
+        }
+    </select>
+    <button>Filtrar</button>
+</form>
+
+@if(Model.Count==0) //cuando la base de datos este vacia
+{
+    <p>Aun no hay mascotas para adoptar</p>
+}
+
+<div class="text-center">
+    @foreach (var m in Model)
+    {
+        <h2>@m.Nombre</h2>
+        <img src="@m.Foto" width="300">
+        <p>tipo:@m.Tipo.Nombre</p>
+        <p>edad:@m.edad</p>
+    }
+</div>

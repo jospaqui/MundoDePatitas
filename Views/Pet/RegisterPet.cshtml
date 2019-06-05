@@ -1,0 +1,34 @@
+@model Mascota
+
+<h1>Registro de Mascotas </h1>
+<form asp-action="RegistrarMascota" method="post">
+
+   <div asp-validation-summary="All"></div>
+
+   <div><label>Nombre: </label>
+       <input asp-for="Nombre">
+   </div>
+
+   <div><label>Edad: </label>
+       <input asp-for="edad">
+   </div>
+
+   <div><label>Sexo: </label>
+       <input asp-for="sexo">
+   </div>
+
+   <div><label>Foto: </label>
+       <input asp-for="Foto">
+   </div>
+
+   <div>tipo:
+       <select name="tipoId">
+           @foreach (var t in (List<TipoMascota>)ViewBag.tipos)
+           {
+               <option value="@t.Id">@t.Nombre</option>
+           }
+       </select>
+   </div>
+   
+   <button>Enviar</button>
+</form>
