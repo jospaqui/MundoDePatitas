@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace MundoDePatitas.Models
@@ -6,19 +9,17 @@ namespace MundoDePatitas.Models
     {
         public int Id { get; set; }
         [Required]
-        public string NombreUsuario { get; set; }
-        public string ApellidosUsuario { get; set; }
-        
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
         [Required]
-        public string EmailUsuario { get; set; }
-        public string ContraseñaUsuario { get; set; }
-        public string TelefonoUsuario { get; set; }
-        public string DNIUsuario { get; set; }
-        public string DireccionUsuario { get; set; }
-        public string DistritoUsuario { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Region { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public int TipoUsuarioId { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
+        public List<Mascota> Mascotas {get; set;}
 
-        public NivelUsuario IDNivelUsuario{ get; set; }
-        public TipoUsuario IDTipoUsuario{get; set; }
     }
 }
 

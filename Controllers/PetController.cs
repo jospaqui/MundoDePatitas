@@ -19,21 +19,10 @@ namespace MundoDePatitas.Controllers
         }
 
         //registrar mascotas
-        public IActionResult RegistrarMascota(){
-            ViewBag.tipos = _context.Tipos.ToList();
+        public IActionResult RegisterPet(){
             return View();
         }
-        [HttpPost]
-        public IActionResult RegistrarMascota(Mascota m){
-            if(ModelState.IsValid)
-            {
-                _context.Add(m);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.tipos = _context.Tipos.ToList();
-            return View();
-        }
+       
     }
 }
     

@@ -25,12 +25,12 @@ namespace MundoDePatitas.Controllers
     }
 
         //ESTA ES LA FICHA DE REGISTRO
-        public IActionResult RegistroUsuarios(){
+        public IActionResult Register(){
             return View();
         }
         
         [HttpPost]
-        public IActionResult RegistroUsuarios(string correo, string nombre, string pass, string direccion){
+        public IActionResult Register(string correo, string nombre, string pass, string direccion){
             TempData["correo"]=correo;
             TempData["nombre"]=nombre;
             TempData["pass"]=pass;
@@ -49,15 +49,12 @@ namespace MundoDePatitas.Controllers
             return View();
          }
         
-         public IActionResult Login(string u, string p){
-              //  if(u=="") aca el condicional de correo y clave 
+        //  public IActionResult Login(string u, string p){
+        //       //  if(u=="") aca el condicional de correo y clave 
             
-            ViewBag.Error="Datos Incorrectos";
-            return View();
-        }
-        
-
-
+        //     ViewBag.Error="Datos Incorrectos";
+        //     return View();
+        // }
 
 
 

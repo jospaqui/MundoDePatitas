@@ -19,15 +19,10 @@ namespace MundoDePatitas.Controllers
 
         }
         
-        public IActionResult Index( int tipomascota) //Listado de las mascotas
+        public IActionResult Index( ) //Listado de las mascotas
         {
-            ViewBag.tipos = _context.Tipos.ToList();
-            var mascotas = _context.Mascotas.Include(x => x.Tipo).ToList();
-
-            if(tipomascota != 0){
-                mascotas = _context.Mascotas.Include(x => x.Tipo).Where(x => x.TipoId == tipomascota).ToList();                
-            }   
-            return View(mascotas);
+           
+            return View();
         }
     }
 }
