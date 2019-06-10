@@ -9,7 +9,9 @@ namespace MundoDePatitas.Models
         public int Id { get; set;}
         [Required]
         public string Nombre{ get; set;}
+        [Required]
         public int Edad  { get; set; }
+        [Required]
         public string Sexo { get; set; }
         public string Descripcion { get; set; }
         public string Region { get; set; }
@@ -27,7 +29,5 @@ namespace MundoDePatitas.Models
         public int RefugioId { get; set; }
         public Refugio Refugio { get; set; }
         public List<FotoMascota> FotoMascotas {get; set;}
-
-
     }
 }

@@ -1,0 +1,14 @@
+@model Especie
+
+<h1>Agregar Especie</h1>
+
+<form asp-action="agregarespecie" method="post">
+
+    <div asp-validation-summary="All"></div>
+
+    <div>Nombre: <input asp-for="Nombre"> </div>
+
+    <div>Foto : <input asp-for="Foto"> </div>
+
+    <button>Adicionar</button>
+</form>
