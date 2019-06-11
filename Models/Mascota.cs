@@ -19,6 +19,10 @@ namespace MundoDePatitas.Models
         public string EspacioRequerido { get; set; }
         public string PuedeEstarSolo { get; set; }
         public string Personalidad { get; set; }
+
+        public string TipoDePelo { get; set; }
+
+         public string Enfermedades { get; set; }
         public DateTime FechaRegistro { get; set; }
         public int EspecieId { get; set; }
         public Especie Especie { get; set; }
@@ -26,6 +30,8 @@ namespace MundoDePatitas.Models
         public Usuario Usuario { get; set; }
         public int RefugioId { get; set; }
         public Refugio Refugio { get; set; }
+
+
         public List<FotoMascota> FotoMascotas {get; set;}
 
 

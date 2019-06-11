@@ -24,7 +24,7 @@ namespace MundoDePatitas.Controllers
       return View();
     }
 
-        //ESTA ES LA FICHA DE REGISTRO
+        //ESTA ES LA FICHA DE REGISTRO para obtener los datos del adoptante
         public IActionResult Register(){
             return View();
         }
@@ -35,10 +35,12 @@ namespace MundoDePatitas.Controllers
             TempData["nombre"]=nombre;
             TempData["pass"]=pass;
             TempData["direccion"]=direccion;
+
         
          return RedirectToAction("ConfirmarRegistro");
         }
 
+        //PARA CONFIRMAR EL REGISTRO DEL USUARIO
         public IActionResult ConfirmarRegistro(){
             return View();
         }
@@ -55,7 +57,7 @@ namespace MundoDePatitas.Controllers
         //     ViewBag.Error="Datos Incorrectos";
         //     return View();
         // }
-
+        // //
 
 
     }    
