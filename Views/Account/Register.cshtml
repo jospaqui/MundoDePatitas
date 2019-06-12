@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registro</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -19,17 +19,58 @@
         </nav>
      </div>
 
-     <div class="container-fluid">
+     <div class="container">
         <div class="row">
-            // para que utilice 4/12
-            <div class="col-4">
+            
+            <div class="col-6">
+
+                <img src="" alt="..." class="img-thumbnail">
+
 
 
 
             </div>
-            //para que utilice 8/12
             <div class="col-6">
+            <h1>Ficha de Postulacion </h1>
 
+
+<form method="post">
+<div class="form-group">
+    <label for="exampleInputEmail1">Nombre </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">Nombre else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">DNI </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">DNI else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Direccion: </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
+  </div>
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Telefono </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your telefono with anyone else.</small>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+   <button type="button" class="btn btn-primary btn-lg btn-block">Registrarse </button>
+</form>
 
 
             </div>
@@ -83,38 +124,7 @@
 
 
 
-<h1>Ficha de Postulacion </h1>
-<form asp-action="Register" method="post">
 
-   <div asp-validation-summary="All"></div>
 
-   <div><label>Nombre: </label>
-       <input asp-for="Nombre">
-   </div>
-
-   <div><label>Correo: </label>
-       <input asp-for="Email">
-   </div>
-
-   <div><label>Password: </label>
-       <input asp-for="Password">
-   </div>
-
-    <div><label>Edad </label>
-       <input asp-for="Password">
-   </div>
-
-    <div><label>Direccion </label>
-       <input asp-for="Password">
-   </div>
-     
-    <div><label>Telefono </label>
-        <input asp-for="Password">
-     </div>
-
- <div><label>Edad:  </label>
-        <input asp-for="Password">
-     </div>
-
-   <button type="button" class="btn btn-primary btn-lg btn-block">Siguiente: </button>
-</form>
+   
+    
