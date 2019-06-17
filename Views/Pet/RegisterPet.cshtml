@@ -1,39 +1,10 @@
 @model Mascota
 
-<h1>Agregar Mascota</h1>
-
-<form asp-action="registerpet" method="post">
 
 
+<span class="border border-dark">
 
-    <div asp-validation-summary="All"></div>
-
-    <div>Nombre: <input asp-for="Nombre"> </div>
-
-
-    <div>Edad: <input asp-for="Edad"> </div>
-
-    <div>Sexo: <input asp-for="Sexo"> </div>
-
-    <div>Descripcion: <input asp-for="Descripcion"> </div>
-
-    <div>Region: <input asp-for="Region"> </div>
-
-    <div>Tamaño: <input asp-for="Tamano"> </div>
-
-    <div>Raza: <input asp-for="Raza"> </div>
-
-    <div>Estado: <input asp-for="Estado"> </div>
-
-    <div>Espacio Requerido: <input asp-for="EspacioRequerido"> </div>
-
-    <div>Puede Estar Solo: <input asp-for="PuedeEstarSolo"> </div>
-
-    <div>Fecha de Registro: <input asp-for="FechaRegistro"> </div>
-
-    <button>Adicionar</button>
-</form>
-
+<h1>Registrar Mascota</h1>
 
 
 
@@ -124,4 +95,5 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
+  </span>
 </form>
