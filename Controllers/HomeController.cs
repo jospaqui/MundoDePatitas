@@ -4,25 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MundoDePatitas.Datos;
-using MundoDePatitas.Models;
+using Patitas.Models;
 
-namespace MundoDePatitas.Controllers
+namespace Patitas.Controllers
 {
     public class HomeController : Controller
     {
-        private MascotaContext _context; //el contexto 
-
-        public HomeController (MascotaContext c){ //el constructor del contexto
-            _context = c;
-
-        }
-        
-        public IActionResult Index( ) //Listado de las mascotas
+        public IActionResult Index()
         {
-           
             return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -1,39 +1,46 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
-
-namespace MundoDePatitas.Models
+namespace Patitas.Models
 {
-    public class Mascota
+    public partial class Mascota
     {
-        public int Id { get; set;}
+        [Key]
+        public int IdMascota { get; set; }
         [Required]
-        public string Nombre{ get; set;}
-        [Required]
-        public int Edad  { get; set; }
+        public string Nombre { get; set; }
         [Required]
         public string Sexo { get; set; }
-        public string Descripcion { get; set; }
-        public string Region { get; set; }
-        public string Tamano { get; set; }
-        public string Raza { get; set; }
-        public string Estado { get; set; }
-        public string EspacioRequerido { get; set; }
+        [Required]
+        public string Tamaño { get; set; }
+        [Required]
         public string PuedeEstarSolo { get; set; }
-        public string Personalidad { get; set; }
+        [Required]
+        public string Personalidades { get; set; }
+        [Required]
+        public int Edad { get; set; }
 
-        public string TipoDePelo { get; set; }
-
-         public string Enfermedades { get; set; }
+        public string Descripcion { get; set; }
+        [Required]
+        public string Direccion { get; set; }
         public DateTime FechaRegistro { get; set; }
-        public int EspecieId { get; set; }
-        public Especie Especie { get; set; }
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
-        public int RefugioId { get; set; }
-        public Refugio Refugio { get; set; }
+        [Required]
+        public string Estado { get; set; }
+
+        public int IdTipoMascota { get; set; }
+
+        public virtual List<FotosMascota> FotosMascota { get; set; }
+
+        public virtual List<Pregunta> Pregunta { get; set; }
 
 
-        public List<FotoMascota> FotoMascotas {get; set;}
+        public int IdRefugio { get; set; }
+
+        public ApplicationUser Id { get; set; }
+
+
+
+        
     }
 }

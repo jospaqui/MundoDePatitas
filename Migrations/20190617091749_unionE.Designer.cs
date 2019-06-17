@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Patitas.Data;
 
 namespace Patitas.Migrations
 {
     [DbContext(typeof(MascotaContext))]
-    partial class MascotaContextModelSnapshot : ModelSnapshot
+    [Migration("20190617091749_unionE")]
+    partial class unionE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,6 +228,8 @@ namespace Patitas.Migrations
 
                     b.Property<int>("IdMascota");
 
+                    b.Property<int>("MyProperty");
+
                     b.Property<string>("nombre");
 
                     b.HasKey("IdFotoMascota");
@@ -262,13 +266,9 @@ namespace Patitas.Migrations
 
                     b.Property<string>("Descripcion");
 
-                    b.Property<string>("Direccion")
-                        .IsRequired();
-
                     b.Property<int>("Edad");
 
-                    b.Property<string>("Estado")
-                        .IsRequired();
+                    b.Property<string>("Estado");
 
                     b.Property<DateTime>("FechaRegistro");
 
@@ -278,20 +278,17 @@ namespace Patitas.Migrations
 
                     b.Property<int>("IdTipoMascota");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired();
+                    b.Property<string>("Nombre");
 
-                    b.Property<string>("Personalidades")
-                        .IsRequired();
+                    b.Property<string>("Personalidades");
 
-                    b.Property<string>("PuedeEstarSolo")
-                        .IsRequired();
+                    b.Property<string>("PuedeEstarSolo");
 
-                    b.Property<string>("Sexo")
-                        .IsRequired();
+                    b.Property<string>("Sexo");
 
-                    b.Property<string>("Tamaño")
-                        .IsRequired();
+                    b.Property<string>("Tamaño");
+
+                    b.Property<string>("Ubicacion");
 
                     b.HasKey("IdMascota");
 
@@ -381,8 +378,6 @@ namespace Patitas.Migrations
 
                     b.Property<string>("Descripcion");
 
-                    b.Property<string>("FotoTipo");
-
                     b.Property<string>("Nombre");
 
                     b.HasKey("IdTipoMascota");
@@ -418,9 +413,9 @@ namespace Patitas.Migrations
 
                     b.Property<DateTime>("FechaDeRegistro");
 
-                    b.Property<string>("Nombre");
+                    b.Property<bool>("IsAdmin");
 
-                    b.Property<string>("Sexo");
+                    b.Property<string>("Nombre");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });

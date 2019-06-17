@@ -1,20 +1,25 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
-namespace MundoDePatitas.Models
+
+namespace Patitas.Models
 {
-    public class Refugio
+    public partial class Refugio
     {
-        public int Id { get; set; }
+        [Key]
+        public int IdRefugio { get; set; }
         public string Nombre { get; set; }
-        public string Direccion { get; set; }
+        public string Ubicacion { get; set; }
         public string Email { get; set; }
-        public string Responsable { get; set; }
-        public string Telefono { get; set; }
-        public DateTime FechaDeRegistro { get; set; }
-        public string Region { get; set; }
+        public int Telefono { get; set; }
+        public DateTime FechaDeCreacion { get; set; }
         public string Logo { get; set; }
-        public List<Mascota> Mascotas {get; set;}
+
+        public ApplicationUser Id { get; set; }
+
+        public virtual List<Mascota> Mascota { get; set; }
 
 
     }

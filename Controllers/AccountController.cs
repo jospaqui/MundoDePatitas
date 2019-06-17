@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MundoDePatitas.Datos;
-using MundoDePatitas.Models;
-namespace MundoDePatitas.Controllers
+using Patitas.Data;
+using Patitas.Models;
+namespace Patitas.Controllers
 {
     public class AccountController:Controller
     {

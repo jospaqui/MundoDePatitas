@@ -7,14 +7,20 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MundoDePatitas.Datos;
-using MundoDePatitas.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Patitas.Data;
+using Patitas.Models;
 
-namespace MundoDePatitas
+
+
+
+
+
+
+namespace Patitas
 {
     public class Startup
     {
@@ -35,38 +41,23 @@ namespace MundoDePatitas
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-
-            
-            
             services.AddDbContext<MascotaContext>(options => options.UseMySql(Configuration.GetConnectionString("Default")));
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<MascotaContext>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            
-
-            // services.Configure<IdentityOptions>(options =>{
-            //     // Password settings.
-            //     options.Password.RequireDigit = true;
-            //     options.Password.RequireLowercase = true;
-            //     options.Password.RequireNonAlphanumeric = true;
-            //     options.Password.RequireUppercase = true;
+            // services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            // {
+            //     options.Password.RequireDigit = false;
             //     options.Password.RequiredLength = 6;
-            //     options.Password.RequiredUniqueChars = 1;
-        
-            //     // Lockout settings.
-            //     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //     options.Lockout.MaxFailedAccessAttempts = 5;
-            //     options.Lockout.AllowedForNewUsers = true;
-        
-            //     // User settings.
-            //     options.User.AllowedUserNameCharacters =
-            //     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            //     options.User.RequireUniqueEmail = false;
-            // });
+            //     options.Password.RequireLowercase = false;
+            //     options.Password.RequireNonAlphanumeric = false;
+            //     options.Password.RequireUppercase = false;
+            // })
+            // .AddEntityFrameworkStores<MascotaContext>(); 
 
-
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
+
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -81,11 +72,12 @@ namespace MundoDePatitas
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
-            app.UseAuthentication();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {

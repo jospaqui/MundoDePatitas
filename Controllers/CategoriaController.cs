@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MundoDePatitas.Datos;
-using MundoDePatitas.Models;
-namespace MundoDePatitas.Controllers
+using Patitas.Data;
+using Patitas.Models;
+namespace Patitas.Controllers
 {
     public class CategoriaController:Controller
     {
@@ -19,15 +19,17 @@ namespace MundoDePatitas.Controllers
 
       }
     
+
+    
     public IActionResult ListadoEspecie( int especieID) //Para listar todas las especies
     {
-      ViewBag.especie = _context.Especies.ToList();
+      ViewBag.especie = _context.TipoMascotas.ToList();
 
-      var especie = _context.Especies.Include(x => x.Id).ToList();
+      var especie = _context.TipoMascotas.Include(x => x.IdTipoMascota).ToList();
 
       if(especieID != 0)
       {
-        especie = _context.Especies.Include(x => x.Id).Where(x => x.Id == especieID).ToList();
+        especie = _context.TipoMascotas.Include(x => x.IdTipoMascota).Where(x => x.IdTipoMascota == especieID).ToList();
       }
       return View(especie);
     }
@@ -36,11 +38,11 @@ namespace MundoDePatitas.Controllers
 
     public IActionResult AgregarEspecie() //Para el registro de nuevas especies
     {
-      ViewBag.especie = _context.Especies.ToList();   
+      ViewBag.especie = _context.TipoMascotas.ToList();   
       return View();
     }
     [HttpPost] //la parte del posteo
-    public IActionResult AgregarEspecie( Especie e)
+    public IActionResult AgregarEspecie( TipoMascota e)
     {
       if (ModelState.IsValid)
       {
@@ -48,7 +50,7 @@ namespace MundoDePatitas.Controllers
           _context.SaveChanges();
           return RedirectToAction("ListadoEspecie");
       }
-      ViewBag.especie = _context.Especies.ToList();
+      ViewBag.especie = _context.TipoMascotas.ToList();
       return View(e);
     }
 

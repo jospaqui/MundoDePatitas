@@ -1,6 +1,6 @@
 using System;
 
-namespace MundoDePatitas.Models
+namespace Patitas.Models
 {
     public class ErrorViewModel
     {

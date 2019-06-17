@@ -1,24 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MundoDePatitas.Models
+namespace Patitas.Models
 {
-    public class Veterinaria
+    public partial class Veterinaria
     {
-        public int Id { get; set; }
-        [Required]
+        [Key]
+        public int IdVeterinaria { get; set; }
         public string Nombre { get; set; }
-        [Required]
-        public string Correo { get; set; }
-        [Required]
-        public string Telefono { get; set; }
-        [Required]
-        public string Responsable { get; set; }
-        [Required]
         public string Direccion { get; set; }
-        public string Region { get; set; }
-        [Required]
+        public string Responsable { get; set; }
+        public int Telefono { get; set; }
         public string Logo { get; set; }
-
     }
 }

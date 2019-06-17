@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MundoDePatitas.Datos;
+using Patitas.Data;
 
-namespace MundoDePatitas.Migrations
+namespace Patitas.Migrations
 {
     [DbContext(typeof(MascotaContext))]
-    [Migration("20190610112550_Initial")]
-    partial class Initial
+    [Migration("20190617092044_unionEF")]
+    partial class unionEF
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,6 +71,9 @@ namespace MundoDePatitas.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -109,6 +112,8 @@ namespace MundoDePatitas.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -180,199 +185,239 @@ namespace MundoDePatitas.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Adoptante", b =>
+            modelBuilder.Entity("Patitas.Models.Adopcion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdAdoptante")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Apellidos");
 
                     b.Property<string>("DNI");
 
                     b.Property<string>("Direccion");
 
-                    b.Property<string>("Email");
+                    b.Property<DateTime>("FechaAdop");
 
-                    b.Property<string>("Nombre");
+                    b.Property<string>("Id1");
 
-                    b.Property<string>("Region");
+                    b.HasKey("IdAdoptante");
 
-                    b.Property<string>("Telefono");
+                    b.HasIndex("Id1");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Adoptantes");
+                    b.ToTable("Adopciones");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Especie", b =>
+            modelBuilder.Entity("Patitas.Models.Anuncio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdAnuncio")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nombre");
+                    b.Property<string>("Contenido");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("FechaFin");
 
-                    b.ToTable("Especies");
+                    b.Property<DateTime>("FechaInicio");
+
+                    b.HasKey("IdAnuncio");
+
+                    b.ToTable("Anuncios");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.FotoMascota", b =>
+            modelBuilder.Entity("Patitas.Models.FotosMascota", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdFotoMascota")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("MascotaId");
+                    b.Property<int>("IdMascota");
+
+                    b.Property<int>("MyProperty");
+
+                    b.Property<string>("nombre");
+
+                    b.HasKey("IdFotoMascota");
+
+                    b.HasIndex("IdMascota");
+
+                    b.ToTable("FotosMascotas");
+                });
+
+            modelBuilder.Entity("Patitas.Models.ListaEspera", b =>
+                {
+                    b.Property<int>("IdListaEspera")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Apellidos");
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("Id");
+                    b.Property<string>("SexoMascota");
 
-                    b.HasIndex("MascotaId");
+                    b.Property<string>("Tamanio");
 
-                    b.ToTable("FotoMascotas");
+                    b.Property<string>("TipoMascota");
+
+                    b.HasKey("IdListaEspera");
+
+                    b.ToTable("ListaDeEspera");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Mascota", b =>
+            modelBuilder.Entity("Patitas.Models.Mascota", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdMascota")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Descripcion");
 
                     b.Property<int>("Edad");
 
-                    b.Property<string>("EspacioRequerido");
-
-                    b.Property<int>("EspecieId");
-
                     b.Property<string>("Estado");
 
                     b.Property<DateTime>("FechaRegistro");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired();
+                    b.Property<string>("Id1");
 
-                    b.Property<string>("Personalidad");
+                    b.Property<int>("IdRefugio");
+
+                    b.Property<int>("IdTipoMascota");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<string>("Personalidades");
 
                     b.Property<string>("PuedeEstarSolo");
 
-                    b.Property<string>("Raza");
-
-                    b.Property<int>("RefugioId");
-
-                    b.Property<string>("Region");
-
                     b.Property<string>("Sexo");
 
-                    b.Property<string>("Tamano");
+                    b.Property<string>("Tamaño");
 
-                    b.Property<int>("UsuarioId");
+                    b.Property<string>("Ubicacion");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdMascota");
 
-                    b.HasIndex("EspecieId");
+                    b.HasIndex("Id1");
 
-                    b.HasIndex("RefugioId");
+                    b.HasIndex("IdRefugio");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("IdTipoMascota");
 
                     b.ToTable("Mascotas");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Refugio", b =>
+            modelBuilder.Entity("Patitas.Models.Mensaje", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdMensaje")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Direccion");
+                    b.Property<string>("Asunto");
+
+                    b.Property<string>("Contenido");
 
                     b.Property<string>("Email");
 
-                    b.Property<DateTime>("FechaDeRegistro");
+                    b.Property<DateTime>("Fecha");
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<string>("Nombre");
+
+                    b.HasKey("IdMensaje");
+
+                    b.ToTable("Mensajes");
+                });
+
+            modelBuilder.Entity("Patitas.Models.Pregunta", b =>
+                {
+                    b.Property<int>("IdPregunta")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Contenido");
+
+                    b.Property<DateTime>("Fecha");
+
+                    b.Property<string>("Id1");
+
+                    b.Property<int>("IdMascota");
+
+                    b.HasKey("IdPregunta");
+
+                    b.HasIndex("Id1");
+
+                    b.HasIndex("IdMascota");
+
+                    b.ToTable("Preguntas");
+                });
+
+            modelBuilder.Entity("Patitas.Models.Refugio", b =>
+                {
+                    b.Property<int>("IdRefugio")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<DateTime>("FechaDeCreacion");
+
+                    b.Property<string>("Id1");
 
                     b.Property<string>("Logo");
 
                     b.Property<string>("Nombre");
 
-                    b.Property<string>("Region");
+                    b.Property<int>("Telefono");
 
-                    b.Property<string>("Responsable");
+                    b.Property<string>("Ubicacion");
 
-                    b.Property<string>("Telefono");
+                    b.HasKey("IdRefugio");
 
-                    b.HasKey("Id");
+                    b.HasIndex("Id1");
 
                     b.ToTable("Refugios");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.TipoUsuario", b =>
+            modelBuilder.Entity("Patitas.Models.TipoMascota", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdTipoMascota")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descripcion");
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdTipoMascota");
 
-                    b.ToTable("TipoUsuarios");
+                    b.ToTable("TipoMascotas");
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Usuario", b =>
+            modelBuilder.Entity("Patitas.Models.Veterinaria", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdVeterinaria")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Direccion");
+
+                    b.Property<string>("Logo");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<string>("Responsable");
+
+                    b.Property<int>("Telefono");
+
+                    b.HasKey("IdVeterinaria");
+
+                    b.ToTable("Veterinarias");
+                });
+
+            modelBuilder.Entity("Patitas.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("Apellidos");
 
-                    b.Property<string>("Email")
-                        .IsRequired();
+                    b.Property<DateTime>("FechaDeRegistro");
 
-                    b.Property<DateTime>("FechaRegistro");
+                    b.Property<string>("Nombre");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired();
+                    b.Property<string>("Sexo");
 
-                    b.Property<string>("Password");
-
-                    b.Property<string>("Region");
-
-                    b.Property<int>("TipoUsuarioId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TipoUsuarioId");
-
-                    b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("MundoDePatitas.Models.Veterinaria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Correo")
-                        .IsRequired();
-
-                    b.Property<string>("Direccion")
-                        .IsRequired();
-
-                    b.Property<string>("Logo")
-                        .IsRequired();
-
-                    b.Property<string>("Nombre")
-                        .IsRequired();
-
-                    b.Property<string>("Region");
-
-                    b.Property<string>("Responsable")
-                        .IsRequired();
-
-                    b.Property<string>("Telefono")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Veterinarias");
+                    b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -420,38 +465,55 @@ namespace MundoDePatitas.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.FotoMascota", b =>
+            modelBuilder.Entity("Patitas.Models.Adopcion", b =>
                 {
-                    b.HasOne("MundoDePatitas.Models.Mascota", "Mascota")
-                        .WithMany("FotoMascotas")
-                        .HasForeignKey("MascotaId")
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Adopcion")
+                        .HasForeignKey("Id1");
+                });
+
+            modelBuilder.Entity("Patitas.Models.FotosMascota", b =>
+                {
+                    b.HasOne("Patitas.Models.Mascota")
+                        .WithMany("FotosMascota")
+                        .HasForeignKey("IdMascota")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Mascota", b =>
+            modelBuilder.Entity("Patitas.Models.Mascota", b =>
                 {
-                    b.HasOne("MundoDePatitas.Models.Especie", "Especie")
-                        .WithMany("Mascotas")
-                        .HasForeignKey("EspecieId")
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Mascota")
+                        .HasForeignKey("Id1");
+
+                    b.HasOne("Patitas.Models.Refugio")
+                        .WithMany("Mascota")
+                        .HasForeignKey("IdRefugio")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MundoDePatitas.Models.Refugio", "Refugio")
-                        .WithMany("Mascotas")
-                        .HasForeignKey("RefugioId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MundoDePatitas.Models.Usuario", "Usuario")
-                        .WithMany("Mascotas")
-                        .HasForeignKey("UsuarioId")
+                    b.HasOne("Patitas.Models.TipoMascota")
+                        .WithMany("Mascota")
+                        .HasForeignKey("IdTipoMascota")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MundoDePatitas.Models.Usuario", b =>
+            modelBuilder.Entity("Patitas.Models.Pregunta", b =>
                 {
-                    b.HasOne("MundoDePatitas.Models.TipoUsuario", "TipoUsuario")
-                        .WithMany("Usuarios")
-                        .HasForeignKey("TipoUsuarioId")
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Pregunta")
+                        .HasForeignKey("Id1");
+
+                    b.HasOne("Patitas.Models.Mascota")
+                        .WithMany("Pregunta")
+                        .HasForeignKey("IdMascota")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Patitas.Models.Refugio", b =>
+                {
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Refugio")
+                        .HasForeignKey("Id1");
                 });
 #pragma warning restore 612, 618
         }

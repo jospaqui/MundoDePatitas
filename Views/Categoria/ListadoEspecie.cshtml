@@ -1,4 +1,4 @@
-@model List<Especie>
+@model List<TipoMascota>
 
 <h1>Listado de Especies</h1>
 
@@ -6,9 +6,9 @@
     Filtrar por Especie:
     <select name="Nombre">
         <option value="0">Todos</option>
-        @foreach (var e in (List<Especie>)ViewBag.Especie)
+        @foreach (var e in (List<TipoMascota>)ViewBag.Especie)
         {
-            <option value="@e.Id">@e.Nombre</option>
+            <option value="@e.IdTipoMascota">@e.Nombre</option>
         }
     </select>
     <button>Filtrar</button> // para mostrar un filtrado simple de las especies
@@ -19,12 +19,12 @@
 }
 
 <div class="row">
-    @foreach (var e in (List<Especie>)ViewBag.Especie)  //para cada especie se dibuja una iteracion
+    @foreach (var e in (List<TipoMascota>)ViewBag.Especie)  //para cada especie se dibuja una iteracion
     {
         <div class="col-4">
-            <img src="@e.Foto"> // una imagen basica de la especie
+            <img src="@e.FotoTipo"> // una imagen basica de la especie
             <h2>Especie: @e.Nombre</h2>    //el nombre de la especie
-            <p>Cantidad: @e.Mascotas.Count</p>  //para mostrar cuantas mascotas existen de ese tipo
+            <p>Cantidad: @e.Mascota.Count</p>  //para mostrar cuantas mascotas existen de ese tipo
         </div>
     }
 </div>

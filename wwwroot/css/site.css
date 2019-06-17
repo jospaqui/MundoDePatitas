@@ -1,5 +1,16 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Lato|Nunito+Sans|Source+Sans+Pro&display=swap');
+
+
+/* *{
+  font-family: 'Concert One', cursive;
+font-family: 'Lato', sans-serif;
+font-family: 'Nunito Sans', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+} */
+
+
 
 a.navbar-brand {
   white-space: normal;

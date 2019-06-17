@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MundoDePatitas.Datos;
-using MundoDePatitas.Models;
+using Patitas.Data;
+using Patitas.Models;
 namespace MundoDePatitas.Controllers
 {
     public class AdminController:Controller
