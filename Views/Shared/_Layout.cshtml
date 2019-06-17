@@ -47,25 +47,21 @@
           
           @if (Context.User.Identity.IsAuthenticated) {
 
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Nosotros 
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mi Perfil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  asp-controller="Pet" asp-action="AddRefugio">Agregar Refugio</a>
-                    <a class="dropdown-item"  asp-controller="Pet" asp-action="Add">Agregar Mascota</a>
+                    <a class="dropdown-item"  asp-controller="Admin" asp-action="AddRefugio">Agregar Refugio</a>
+                    <a class="dropdown-item"  asp-controller="Admin" asp-action="AddPet">Agregar Mascota</a>
+                    <a class="dropdown-item"   asp-controller="Account" asp-action="Logout">Salir</a>
                 </div>
               </li>
 
-              <li class="nav-item"><a class="nav-link"  asp-controller="Account" asp-action="Logout">Salir</a></li>
-              <li class="nav-item"><a class="nav-link font-weight-bold text-white" asp-area="" asp-controller="Cuenta" asp-action="modificarContrasena">Modificar Contraseña</a></li>
           }
           else {
               <li class="nav-item"><a class="nav-link"  asp-controller="Account" asp-action="Register">Registrarse</a></li>
-              <li class="nav-item "> <a class="nav-link btn btn-outline-info my-2 my-sm-0 mr-3 text-uppercase  asp-controller="Account" asp-action="Login">Login</a>  </li>
+              <li class="nav-item"><a class="nav-link"  asp-controller="Account" asp-action="Login">Login</a></li>
           }
-            
-          
-          
         </ul>
       </div>
     </nav>

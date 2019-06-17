@@ -1,0 +1,53 @@
+@model Patitas.Models.Mascota
+@{
+    ViewBag.Title = "Agregar Mascota";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+<form asp-action="AddPet" method="post">
+    <div class="form-group">
+        <label >Nombre: </label>
+        <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <label >Sexo: </label>
+        <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <label >Tamaño: </label>
+        <select asp-for="Tamaño" class="form-control">
+            <option select>Escoger...</option>
+            <option value="pequeño">Pequeño</option>
+            <option value="mediano">Mediano</option>
+            <option value="grande">Grande</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label >Puede estar solo: </label>
+        <select asp-for="PuedeEstarSolo" class="form-control">
+            <option select>Escoger...</option>
+            <option value="si">si</option>
+            <option value="no">no</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label >Personalidades: </label>
+        <select asp-for="Personalidades" class="form-control">
+            <option select>Escoger...</option>
+            <option value="jugueton">Jugueton</option>
+            <option value="Alegre">Alegre</option>
+            <option value="Dormilon">Dormilon</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+        <label >Descripcion: </label>
+        <input type="text" asp-for="Descripcion" class="form-control"  placeholder="Nombre">
+    </div>
+  <div class="form-group">
+        <label >Direccion: </label>
+        <input type="text" asp-for="Direccion" class="form-control"  placeholder="Nombre">
+    </div>
+    
+  <button type="submit" class="btn btn-primary text-white g font-weight-bold btn-lg btn-block">Agregar Mascota</button>
+</form>

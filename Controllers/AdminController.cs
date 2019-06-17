@@ -21,5 +21,26 @@ namespace MundoDePatitas.Controllers
           //TODO: Implement Realistic Implementation
           return View();
         }
+
+         public IActionResult AddPet()
+        {
+            ViewBag.Mascota = _context.Mascotas.ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPet(Mascota m)
+        {
+            if (ModelState.IsValid){
+                _context.Add(m);
+                _context.SaveChanges();
+
+                return RedirectToAction("Admin","Admin");
+            }
+            ViewBag.Mascota = _context.Mascotas.ToList();
+
+            return View();
+        }
     }
 }

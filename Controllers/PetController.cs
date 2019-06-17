@@ -22,7 +22,11 @@ namespace Patitas.Controllers
         public IActionResult RegisterPet(){
             return View();
         }
-       
+       public IActionResult PetList()
+       {
+         //TODO: Implement Realistic Implementation
+         return View();
+       }
     }
 }
     
