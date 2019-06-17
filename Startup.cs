@@ -14,12 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using Patitas.Data;
 using Patitas.Models;
 
-
-
-
-
-
-
 namespace Patitas
 {
     public class Startup

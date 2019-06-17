@@ -1,22 +1,36 @@
     
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Patitas.Data;
 using Patitas.Models;
+using Patitas.ViewModels;
+
 namespace Patitas.Controllers
 {
     public class AccountController:Controller
     {
-      private MascotaContext _context; //el contexto 
+        private MascotaContext _context;
+        private UserManager<IdentityUser> _userManager;
+        private SignInManager<IdentityUser> _signInManager;
 
-      public AccountController (MascotaContext c){ //el constructor del contexto
-            _context = c;
 
-      }
+        public AccountController(
+            MascotaContext mc,
+            UserManager<IdentityUser> um,
+            SignInManager<IdentityUser> sim
+        ){
+            _context=mc;
+            _userManager=um;
+            _signInManager=sim;
+
+        }
+
   
     public IActionResult RecuperarContraseña()
     {
@@ -47,17 +61,26 @@ namespace Patitas.Controllers
 
 
 
-         public IActionResult Login(){
+         public IActionResult Login() {
             return View();
-         }
-        
-        //  public IActionResult Login(string u, string p){
-        //       //  if(u=="") aca el condicional de correo y clave 
-            
-        //     ViewBag.Error="Datos Incorrectos";
-        //     return View();
-        // }
-        // //
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model) {
+            if (ModelState.IsValid) {
+                var resultado = _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+
+                if (resultado.Result.Succeeded) {
+                    return RedirectToAction("index", "home");
+                }
+                else {
+                    ModelState.AddModelError("error", "Usuario o contraseña incorrectos");
+                
+                }
+            }
+
+            return View(model);
+        }
 
 
     }    

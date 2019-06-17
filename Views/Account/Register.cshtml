@@ -1,83 +1,46 @@
 @model ApplicationUser
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro</title>
-</head>
-<body>
-   
-
+@{
+    ViewData["Title"] = "Registro";
+}
      <div class="container">
-      
-        <div class="row">
-            
-            <div class="col-6">
-
-                <img src="" alt="..." class="img-thumbnail">
-
-
-
-
+        <div class="row register">
+            <div class="col-md-6">
+                <img src="~/img/register.png" alt="img register" class="img-fluid w-100">
             </div>
-            <div class="col-6">
-            <h1>Ficha de Postulacion </h1>
+            <div class="col-md-6">
+            <p class="h2 text-align-center">Bienvenido </h1>
 
+            <form method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre </label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                  </div>
 
-<form method="post">
-<div class="form-group">
-    <label for="exampleInputEmail1">Nombre </label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre">
-    <small id="emailHelp" class="form-text text-muted"></small>
-  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                    <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con otras personas.</small>
+                  </div>
 
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Direccion: </label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
+                    <small id="emailHelp" class="form-text text-muted">No compartiremos tu direccion con otras personas</small>
+                  </div>
 
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Telefono </label>
+                    <input type="Telefono" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Telefono">
+                    <small id="emailHelp" class="form-text text-muted">No compartiremos tu telefono con otras personas.</small>
+                  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">DNI </label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
-    <small id="emailHelp" class="form-text text-muted"></small>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-    <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con otras personas.</small>
-  </div>
-
-<div class="form-group">
-    <label for="exampleInputEmail1">Direccion: </label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
-    <small id="emailHelp" class="form-text text-muted">No compartiremos tu direccion con otras personas</small>
-  </div>
-
-<div class="form-group">
-    <label for="exampleInputEmail1">Telefono </label>
-    <input type="Telefono" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Telefono">
-    <small id="emailHelp" class="form-text text-muted">No compartiremos tu telefono con otras personas.</small>
-  </div>
-
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Comprobar</label>
-  </div>
-   <button type="button" class="btn btn-primary btn-lg btn-block">Registrarse </button>
-</form>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Comprobar</label>
+                  </div>
+                   <button type="button" class="btn btn-primary btn-lg btn-block">Registrarse </button>
+                </form>
 
 
             </div>
@@ -85,53 +48,5 @@
         </div>
 
      </div>
-     
-   
-        
 
 
-
-
-
-
-
-     
-
-
-
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-    
