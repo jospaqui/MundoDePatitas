@@ -39,25 +39,38 @@ namespace Patitas.Controllers
     }
 
         //ESTA ES LA FICHA DE REGISTRO para obtener los datos del adoptante
-        public IActionResult Register(){
+        public IActionResult Register() {
             return View();
-        }
-        
-        [HttpPost]
-        public IActionResult Register(string correo, string nombre, string pass, string direccion){
-            TempData["correo"]=correo;
-            TempData["nombre"]=nombre;
-            TempData["pass"]=pass;
-            TempData["direccion"]=direccion;
+         }
 
-        
-         return RedirectToAction("ConfirmarRegistro");
-        }
+         [HttpPost]
+         public IActionResult Register(RegisterViewModel model) {
+            if (ModelState.IsValid) {
+                var user = new ApplicationUser() { 
+                    Nombre = model.Nombre, 
+                    Apellidos=model.Apellidos,
+                    Email=model.Email,
+                    Sexo=model.Sexo,
+                    FechaDeRegistro=DateTime.Now
+                    };
 
-        //PARA CONFIRMAR EL REGISTRO DEL USUARIO
-        public IActionResult ConfirmarRegistro(){
-            return View();
-        }
+
+                var resultado = _userManager.CreateAsync(user, model.Password);
+
+                if (resultado.Result == IdentityResult.Success) {
+
+                    return RedirectToAction("Login", "Account");
+                }
+                else {
+                    foreach (var error in resultado.Result.Errors) {
+                        ModelState.AddModelError("error", error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+         }
+
 
 
 
