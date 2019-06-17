@@ -86,7 +86,7 @@ namespace Patitas.Controllers
                 var resultado = _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
                 if (resultado.Result.Succeeded) {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("admin", "Admin");
                 }
                 else {
                     ModelState.AddModelError("error", "Usuario o contraseña incorrectos");
@@ -97,6 +97,10 @@ namespace Patitas.Controllers
             return View(model);
         }
 
+        public IActionResult Logout() {
+            _signInManager.SignOutAsync();
 
+            return RedirectToAction("Login", "Account");
+        }
     }    
 }

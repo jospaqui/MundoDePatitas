@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mundo De Patitas</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    
+    
+
+
+<div class="todo">
+    <div class="cabecera">
+            <div class="logo"> 
+                <img src="~/img/logo.png" alt="">
+            </div>
+            
+            <div class="foto-perfil1">
+                <img src="~/img/6.jpg" alt="Foto Perfil">
+                <div class="logout">
+                    <a asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"style="font-size:40px;color:#2C304D; margin-left: 10px;"> </i></a> 
+                </div>
+            </div>    
+    </div>
+    <div class="bloque-cuerpo">
+        <div class="bloque-menu">
+                <div class="perfil">
+                    <div class="foto-perfil">
+                        <img src="~/img/6.jpg" alt="Foto Perfil">
+                    </div>
+                    <div class="nombre-perfil">
+                       <p>Bienvenido <span>Admin</span>
+                        <br> <a asp-controller="Pet" asp-action="List"  target=”_blank”>Ver Mascotas<i class="fas fa-store"></i></a> </p> 
+                    
+                    </div>
+                    <div class="tools">
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Principal</a> </li>
+                            <li><a asp-controller="Pet" asp-action="List"><i class="fas fa-wine-bottle"></i>Mascotas</a></li>                 
+                            <li><a asp-controller="Pet" asp-action="Adopciones"><i class="fab fa-opencart"></i> Adopciones</a></li>
+                            <li><a asp-controller="Account" asp-action="Users"><i class="fas fa-users"></i> Usuarios</a></li>
+                            <li><a asp-controller="Account" asp-action="ListaEspera"><i class="fas fa-mail-bulk"></i> Lista Espera</a></li>
+                            <li><a asp-controller="Account" asp-action="Mensajes"><i class="fas fa-envelope-open-text"></i>Mensajes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                
+                @RenderBody()
+                
+            </div>
+        </div>
+        
+    </div>
+
+
+    
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/8f1fbf8426.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
