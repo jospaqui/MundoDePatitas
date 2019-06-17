@@ -1,0 +1,35 @@
+@model List<Especie>
+
+<h1>Listado de Especies</h1>
+
+<form asp-action="ListadoEspecie" method="get">   
+    Filtrar por Especie:
+    <select name="Nombre">
+        <option value="0">Todos</option>
+        @foreach (var e in (List<Especie>)ViewBag.Especie)
+        {
+            <option value="@e.Id">@e.Nombre</option>
+        }
+    </select>
+    <button>Filtrar</button> // para mostrar un filtrado simple de las especies
+</form>
+
+@if(Model.Count == 0){  //si no hay especies aun mostrar este mensaje
+    <p>Aun no hay Especies Registradas</p>
+}
+
+<div class="row">
+    @foreach (var e in (List<Especie>)ViewBag.Especie)  //para cada especie se dibuja una iteracion
+    {
+        <div class="col-4">
+            <img src="@e.Foto"> // una imagen basica de la especie
+            <h2>Especie: @e.Nombre</h2>    //el nombre de la especie
+            <p>Cantidad: @e.Mascotas.Count</p>  //para mostrar cuantas mascotas existen de ese tipo
+        </div>
+    }
+</div>
+
+<div>
+    <h3>No encontraste la Especie que buscabas?</h3>
+    <h4> <a href="~/Categoria/AgregarEspecie"> Agregala aqui</a> </h4>
+</div>
