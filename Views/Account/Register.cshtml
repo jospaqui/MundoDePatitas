@@ -13,15 +13,19 @@
             <form asp-action="register" method="post">
               <div asp-validation-summary="All"></div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Nombre: </label>
-                      <input asp-for="Nombre" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                      <label >Nombre: </label>
+                      <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre">
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Apellidos: </label>
-                      <input asp-for="Apellidos" class="form-control" id="exampleInputEmail1" placeholder="Apellidos">
+                      <label >Apellidos: </label>
+                      <input type="text" asp-for="Apellidos" class="form-control" placeholder="Apellidos">
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Eres: </label>
+                      <label >Username: </label>
+                      <input type="text" asp-for="UserName" class="form-control" placeholder="Apellidos">
+                  </div>
+                  <div class="form-group">
+                      <label >Eres: </label>
                       <select asp-for="Sexo" class="form-control">
                           <option value="">Escoger...</option>
                           <option value="Mujer">Mujer</option>
@@ -30,12 +34,12 @@
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="inputEmail4">Email: </label>
-                      <input asp-for="Email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <label>Email: </label>
+                      <input asp-for="Email" class="form-control"  placeholder="Email">
                   </div>
                   <div class="form-group">
-                      <label for="inputPassword4">Password: </label>
-                      <input asp-for="Password" class="form-control" id="inputPassword4" placeholder="Password">
+                      <label>Password: </label>
+                      <input asp-for="Password" class="form-control" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <button class="btn btn-primary text-white g font-weight-bold btn-lg btn-block">Crear cuenta</button>

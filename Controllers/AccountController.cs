@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Patitas.Data;
 using Patitas.Models;
 using Patitas.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Patitas.Controllers
 {
@@ -42,12 +43,13 @@ namespace Patitas.Controllers
         public IActionResult Register() {
             return View();
          }
-
+        [AllowAnonymous]
          [HttpPost]
          public IActionResult Register(RegisterViewModel model) {
             if (ModelState.IsValid) {
-                var user = new ApplicationUser() { 
-                    Nombre = model.Nombre, 
+                var user = new ApplicationUser { 
+                    Nombre= model.Nombre, 
+                    UserName=model.UserName,
                     Apellidos=model.Apellidos,
                     Email=model.Email,
                     Sexo=model.Sexo,
@@ -81,7 +83,7 @@ namespace Patitas.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel model) {
             if (ModelState.IsValid) {
-                var resultado = _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                var resultado = _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
                 if (resultado.Result.Succeeded) {
                     return RedirectToAction("index", "home");

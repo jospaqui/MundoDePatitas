@@ -9,7 +9,8 @@ namespace Patitas.ViewModels
         public string Nombre { get; set; }
         [Required]
         public string Apellidos { get; set; }
-
+        [Required]
+        public string UserName { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
