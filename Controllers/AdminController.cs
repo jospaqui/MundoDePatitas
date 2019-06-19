@@ -93,22 +93,20 @@ namespace Patitas.Controllers
             return View();
         }
 
-        public IActionResult AddVeterinaria()
-        {
-          //TODO: Implement Realistic Implementation
-          return View();
-        }
 
+        public IActionResult AddVeterinaria() { 
+             ViewBag.Veterinarias = _context.Veterinarias.ToList();
+            return View(); 
+        }
         [HttpPost]
-        public IActionResult AddVeterinaria(AddVeterinariaViewModel v) { 
+        public IActionResult AddVeterinaria(Veterinaria v) { 
               if (ModelState.IsValid){
-                
                 _context.Add(v);
                 _context.SaveChanges();
 
                 return RedirectToAction("Admin","Admin");
             }
-
+             ViewBag.Veterinarias = _context.Veterinarias.ToList();
             return View();
         }
         
