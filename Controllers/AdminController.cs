@@ -108,6 +108,10 @@ namespace Patitas.Controllers
             }
             return View(v);
         }
-        
+        public IActionResult Pets()
+        {
+          var Mascota = _context.Mascotas.ToList();
+          return View(Mascota);
+        }
     }
 }

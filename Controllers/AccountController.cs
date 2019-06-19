@@ -106,7 +106,7 @@ namespace Patitas.Controllers
                 var resultado = _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
                 if (resultado.Result.Succeeded) {
-                    return RedirectToAction("admin", "Admin");
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 else {
                     ModelState.AddModelError("error", "Usuario o contraseña incorrectos");
