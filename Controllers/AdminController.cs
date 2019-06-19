@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MundoDePatitas.ViewModels;
 using Patitas.Data;
 using Patitas.Models;
 using static System.Net.Mime.MediaTypeNames;
@@ -84,6 +85,25 @@ namespace Patitas.Controllers
               if (ModelState.IsValid){
                 
                 _context.Add(r);
+                _context.SaveChanges();
+
+                return RedirectToAction("Admin","Admin");
+            }
+
+            return View();
+        }
+
+        public IActionResult AddVeterinaria()
+        {
+          //TODO: Implement Realistic Implementation
+          return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddVeterinaria(AddVeterinariaViewModel v) { 
+              if (ModelState.IsValid){
+                
+                _context.Add(v);
                 _context.SaveChanges();
 
                 return RedirectToAction("Admin","Admin");
