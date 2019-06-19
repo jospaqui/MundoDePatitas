@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-namespace Trabajo.ViewModels
+namespace Patitas.ViewModels
 {
-    public class RecuperarContrasenaViewModel
+    public class ChangePasswordViewModel
     {
         [Required]
         [DataType(DataType.Password)]

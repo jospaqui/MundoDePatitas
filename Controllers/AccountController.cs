@@ -28,46 +28,37 @@ namespace Patitas.Controllers
         }
 
   
-    public IActionResult RecuperarContraseña()
-    {
-      //TODO: Implement Realistic Implementation
-      return View();
-    }
-
-
-    [HttpPost]
-public IActionResult RecuperarContrasena(modificarContrasenaViewModel vm){
-    {
-     
-            if (ModelState.IsValid) {
-                
-                var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
-                var resultado = _userManager.ChangePasswordAsync(user, vm.ContrasenaActual, vm.ContrasenaNueva);
-
-                if (resultado.Result == IdentityResult.Success) {
-                    
-                    return RedirectToAction("Index", "Home");
-                }
-                else {
-                    foreach (var error in resultado.Result.Errors) {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-               
+            public IActionResult ChangePassword()
+            {
+            //TODO: Implement Realistic Implementation
+            return View();
             }
 
-      return View();   
-    }
+
+            [HttpPost]
+            public IActionResult ChangePassword(ChangePasswordViewModel vm)
+            {
+                    if (ModelState.IsValid) {
+                
+                        var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+                        var resultado = _userManager.ChangePasswordAsync(user, vm.ContrasenaActual, vm.ContrasenaNueva);
+                        if (resultado.Result == IdentityResult.Success) {
+                    
+                                return RedirectToAction("Index", "Home");
+                        }
+                        else {
+                                foreach (var error in resultado.Result.Errors) {
+                                ModelState.AddModelError("", error.Description);
+                                }
+                        }
+               
+                    }
+            
+            return View();   
+            }
     
 
-
-
-
-
-
-
-        //ESTA ES LA FICHA DE REGISTRO para obtener los datos del adoptant
-            public Register(){
+            public IActionResult Register(){
 
             return View();
             }
