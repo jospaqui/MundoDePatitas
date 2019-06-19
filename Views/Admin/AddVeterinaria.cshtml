@@ -1,0 +1,29 @@
+@model Veterinaria
+
+@{
+    ViewBag.Title = "Agregar Veterinaria";
+}
+
+<form asp-action="AddVeterinaria" method="post">
+    <div class="form-group">
+        <label >Nombre: </label>
+        <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre Veterinaria">
+    </div>
+    <div class="form-group">
+        <label >Direccion: </label>
+        <input type="text" asp-for="Direccion" class="form-control"  placeholder="Direccion de la Veterinaria">
+    </div>
+    <div class="form-group">
+        <label >Responsable: </label>
+        <input type="text" asp-for="Responsable" class="form-control"  placeholder="Responsable de la Veterinaria">
+    </div>
+    <div class="form-group">
+        <label >Telefono: </label>
+        <input type="text" asp-for="Telefono" class="form-control"  placeholder="Telefono Veterinaria">
+    </div>
+    <div class="form-group">
+        <label >Logo: </label>
+        <input type="text" asp-for="Logo" class="form-control"  placeholder="Logo Veterinaria">
+    </div>
+  <button type="submit" class="btn btn-primary text-white g font-weight-bold btn-lg btn-block">Agregar Refugio</button>
+</form>
