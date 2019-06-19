@@ -10,6 +10,10 @@ namespace Patitas.Controllers
 {
     public class HomeController : Controller
     {
+        public IActionResult ListadoVeterinaria(){
+            return View();
+        }
+        
         public IActionResult Index()
         {
             return View();
