@@ -21,7 +21,6 @@ namespace Patitas.ViewModels
         [Required]
         public string Estado { get; set; }
         public string FotoMascota { get; set; }
-        public int IdRefugio { get; set; }
         public int IdTipoMascota { get; set; }
 
     }
