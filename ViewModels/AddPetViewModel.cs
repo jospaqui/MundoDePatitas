@@ -20,7 +20,8 @@ namespace Patitas.ViewModels
         public string Direccion { get; set; }
         [Required]
         public string Estado { get; set; }
-
+        public string FotoMascota { get; set; }
+        public int IdRefugio { get; set; }
         public int IdTipoMascota { get; set; }
 
     }

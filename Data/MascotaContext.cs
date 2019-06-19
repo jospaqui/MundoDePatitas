@@ -11,7 +11,6 @@ namespace Patitas.Data
         
         public DbSet<Adopcion> Adopciones { get; set; }
         public DbSet<Anuncio> Anuncios { get; set; }
-        public DbSet<FotosMascota> FotosMascotas { get; set; }
         public DbSet<ListaEspera> ListaDeEspera { get; set; }
         public DbSet<Mascota> Mascotas { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }

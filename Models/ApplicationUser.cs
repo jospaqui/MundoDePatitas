@@ -18,9 +18,7 @@ namespace Patitas.Models
 
 
         
-        public virtual List<Refugio> Refugio {get; set; }
 
-        public virtual List<Mascota> Mascota { get; set; }
 
         public virtual List<Pregunta> Pregunta { get; set; }
 

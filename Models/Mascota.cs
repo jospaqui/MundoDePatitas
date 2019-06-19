@@ -20,6 +20,7 @@ namespace Patitas.Models
         public string Personalidades { get; set; }
         [Required]
         public int Edad { get; set; }
+        public string FotoMascota { get; set; }
 
         public string Descripcion { get; set; }
         [Required]
@@ -30,14 +31,11 @@ namespace Patitas.Models
 
         public int IdTipoMascota { get; set; }
 
-        public virtual List<FotosMascota> FotosMascota { get; set; }
 
         public virtual List<Pregunta> Pregunta { get; set; }
 
 
-        public int IdRefugio { get; set; }
 
-        public ApplicationUser Id { get; set; }
 
         
     }

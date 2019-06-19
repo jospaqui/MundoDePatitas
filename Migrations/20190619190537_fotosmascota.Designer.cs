@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Patitas.Data;
 
 namespace Patitas.Migrations
 {
     [DbContext(typeof(MascotaContext))]
-    partial class MascotaContextModelSnapshot : ModelSnapshot
+    [Migration("20190619190537_fotosmascota")]
+    partial class fotosmascota
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,6 +260,10 @@ namespace Patitas.Migrations
 
                     b.Property<string>("FotoMascota");
 
+                    b.Property<string>("Id1");
+
+                    b.Property<int>("IdRefugio");
+
                     b.Property<int>("IdTipoMascota");
 
                     b.Property<string>("Nombre")
@@ -276,6 +282,10 @@ namespace Patitas.Migrations
                         .IsRequired();
 
                     b.HasKey("IdMascota");
+
+                    b.HasIndex("Id1");
+
+                    b.HasIndex("IdRefugio");
 
                     b.HasIndex("IdTipoMascota");
 
@@ -335,6 +345,8 @@ namespace Patitas.Migrations
 
                     b.Property<DateTime>("FechaDeCreacion");
 
+                    b.Property<string>("Id1");
+
                     b.Property<string>("Logo");
 
                     b.Property<string>("Nombre");
@@ -344,6 +356,8 @@ namespace Patitas.Migrations
                     b.Property<string>("Ubicacion");
 
                     b.HasKey("IdRefugio");
+
+                    b.HasIndex("Id1");
 
                     b.ToTable("Refugios");
                 });
@@ -453,6 +467,15 @@ namespace Patitas.Migrations
 
             modelBuilder.Entity("Patitas.Models.Mascota", b =>
                 {
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Mascota")
+                        .HasForeignKey("Id1");
+
+                    b.HasOne("Patitas.Models.Refugio")
+                        .WithMany("Mascota")
+                        .HasForeignKey("IdRefugio")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Patitas.Models.TipoMascota")
                         .WithMany("Mascota")
                         .HasForeignKey("IdTipoMascota")
@@ -469,6 +492,13 @@ namespace Patitas.Migrations
                         .WithMany("Pregunta")
                         .HasForeignKey("IdMascota")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Patitas.Models.Refugio", b =>
+                {
+                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
+                        .WithMany("Refugio")
+                        .HasForeignKey("Id1");
                 });
 #pragma warning restore 612, 618
         }

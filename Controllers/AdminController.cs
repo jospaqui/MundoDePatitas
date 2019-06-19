@@ -62,8 +62,7 @@ namespace Patitas.Controllers
             else{
               RedirectToAction("Home","Index");
             }
-            ViewBag.TipoMascotas = _context.TipoMascotas.ToList();
-
+            
             return View(m);
          }
 
@@ -102,12 +101,12 @@ namespace Patitas.Controllers
         [HttpPost]
         public IActionResult AddVeterinaria(Veterinaria v) { 
               if (ModelState.IsValid){
-                _context.Add(v);
+                _context.Veterinarias.Add(v);
                 _context.SaveChanges();
 
-                return RedirectToAction("Admin","Veterinarias");
+                return RedirectToAction("Veterinarias");
             }
-            return View();
+            return View(v);
         }
         
     }

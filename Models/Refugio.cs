@@ -17,9 +17,7 @@ namespace Patitas.Models
         public DateTime FechaDeCreacion { get; set; }
         public string Logo { get; set; }
 
-        public ApplicationUser Id { get; set; }
 
-        public virtual List<Mascota> Mascota { get; set; }
 
 
     }

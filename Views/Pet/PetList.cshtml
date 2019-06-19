@@ -21,10 +21,7 @@
     @foreach (var m in (List<Mascota>)ViewBag.mascotas)  //para cada mascota se dibuja una iteracion
     {
         <div class="col-4">
-            @foreach (var f in m.FotosMascota)
-            {
-                <img src="@f.nombre"> // una imagen basica de la especie
-            }        
+            <p>@m.FotoMascota</p>  
             <p>@m.Nombre</p>
             <p>@m.Sexo</p>
             <p>@m.Tamaño</p>
@@ -35,8 +32,6 @@
             <p>@m.Direccion</p>
             <p>@m.FechaRegistro</p>
             <p>@m.IdTipoMascota</p>
-            <p>@m.IdRefugio</p>
-            <p>@m.Id</p>
         </div>
     }
 </div>
