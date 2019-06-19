@@ -1,12 +1,9 @@
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MundoDePatitas.ViewModels;
 using Patitas.Data;
 using Patitas.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Patitas.Controllers
 {
@@ -89,10 +86,17 @@ namespace Patitas.Controllers
 
             return View();
         }
+        public IActionResult Refugios(){
+          var Refugio = _context.Refugios.ToList();
+          return View(Refugio);
+        }
+        public IActionResult Veterinarias(){
+          var Veterinaria = _context.Veterinarias.ToList();
+          return View(Veterinaria);
+        }
 
 
         public IActionResult AddVeterinaria() { 
-             ViewBag.Veterinarias = _context.Veterinarias.ToList();
             return View(); 
         }
         [HttpPost]
@@ -101,9 +105,8 @@ namespace Patitas.Controllers
                 _context.Add(v);
                 _context.SaveChanges();
 
-                return RedirectToAction("Admin","Admin");
+                return RedirectToAction("Admin","Veterinarias");
             }
-             ViewBag.Veterinarias = _context.Veterinarias.ToList();
             return View();
         }
         

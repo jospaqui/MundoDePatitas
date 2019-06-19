@@ -7,9 +7,8 @@
     }
 
     <div class="row">
-    @foreach (var v in (List<Veterinaria>)ViewBag.vet)  //para cada mascota se dibuja una iteracion
-    {
-        <div class="col-4">      
+    @foreach (var v in Model) {
+        <div class="col-md-4">      
             <p>@v.IdVeterinaria</p>
             <p>@v.Nombre</p>
             <p>@v.Direccion</p>

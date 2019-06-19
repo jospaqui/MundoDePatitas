@@ -1,0 +1,74 @@
+@model List<Veterinaria>
+@{
+    ViewBag.Title = "Panel de administracion";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+<section>
+<div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title-5 m-b-35">Veterinarias</h3>
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-right">
+                                    
+                                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter"class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                            <i class="zmdi zmdi-plus"></i>Agregar</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </th>
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Ubicacion</th>
+                                                <th>Responsable</th>
+                                                <th>Telefono</th>
+                                                <th>Logo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach(var v in Model) {
+
+                                            <tr class="tr-shadow">
+                                                <td>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="desc">@v.IdVeterinaria</td>
+                                                <td>@v.Nombre</td>
+                                                <td>@v.Direccion</td>
+                                                <td>
+                                                    <span class="block-email">@v.Responsable</span>
+                                                </td>
+                                                <td >@v.Telefono</td>
+                                                <td>
+                                                    <span class="status--process">@v.Logo</span>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>                                        
+                                            <tr class="spacer"></tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+</section>

@@ -56,15 +56,28 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="Mensajes">
-                                <i class="fas fa-chart-bar"></i>Mensajes</a>
+                            <a asp-controller="Admin" asp-action="Users">
+                                <i class="fas fa-user-friends"></i>Usuarios</a>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="Mascotas">
-                                <i class="fas fa-shopping-basket"></i>Mascotas</a>
+                            <a asp-controller="Admin" asp-action="Refugios">
+                                <i class="fas fa-home"></i>Refugios</a>
                         </li>
                         
-                        
+                        <li>
+                            <a asp-controller="Admin" asp-action="Veterinarias">
+                                <i class="fas fa-clinic-medical"></i>Veterinarias</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Admin" asp-action="Mensajes">
+                               <i class="fas fa-envelope-square"></i>Mensajes</a>
+                        </li><li>
+                            <a asp-controller="Admin" asp-action="ListaDeEspera">
+                                 <i class="fas fa-envelope-open-text"></i>Lista De Espera</a>
+                        </li><li>
+                            <a asp-controller="Admin" asp-action="Configuraciones">
+                                <i class="fas fa-tools"></i>Configuraciones</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -129,10 +142,14 @@
                     </nav>
                 </div>
             </aside>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        @RenderBody()
 
-            
-
-            @RenderBody()
+                    </div>
+                </div>
+            </div>
 
             <section>
                 <div class="container-fluid">

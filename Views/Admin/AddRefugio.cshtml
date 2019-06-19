@@ -2,28 +2,33 @@
 
 @{
     ViewBag.Title = "Agregar Refugio";
+        Layout = "~/Views/Shared/_admin.cshtml";
+
 }
+<h3 class="title-5 m-b-35">Agregar Veterinarias</h3>
 
 <form asp-action="AddRefugio" method="post">
-    <div class="form-group">
-        <label >Nombre: </label>
-        <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre del refugio">
+    <div class="row">
+
+    
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >Nombre: </label>
+            <input type="text" asp-for="Nombre" class="form-control"  placeholder="Nombre del refugio">
+        </div>
+        <div class="form-group">
+            <label >Email: </label>
+            <input type="email" asp-for="Email" class="form-control"  placeholder="Email del refugio">
+        </div>
     </div>
-    <div class="form-group">
-        <label >Email: </label>
-        <input type="email" asp-for="Email" class="form-control"  placeholder="Email del refugio">
-    </div>
-    <div class="form-group">
-        <label >Telefono: </label>
-        <input type="text" asp-for="Telefono" class="form-control"  placeholder="Telefono del refugio">
-    </div>
-    <div class="form-group">
-        <label >Logo: </label>
-        <input type="text" asp-for="Logo" class="form-control"  placeholder="Email del refugio">
-    </div>
-  <div class="form-group">
-        <label >Direccion: </label>
-        <select asp-for="Ubicacion" class="form-control">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >Telefono: </label>
+            <input type="text" asp-for="Telefono" class="form-control"  placeholder="Telefono del refugio">
+        </div>
+        <div class="form-group">
+            <label >Direccion: </label>
+            <select asp-for="Ubicacion" class="form-control">
             <option selected> Escoger...</option>
             <option value="Amazonas">Amazonas</option>
             <option value="Áncash">Áncash</option>
@@ -51,7 +56,16 @@
             <option value="Tumbes">Tumbes</option>
             <option value="Ucayali">Ucayali</option>
         </select>
+        </div>
     </div>
+    <div class="form-group col-md-12">
+        <label >Logo: </label>
+        <input type="text" asp-for="Logo" class="form-control"  placeholder="Email del refugio">
+    </div>
+</div>
     
+    
+    
+  
   <button type="submit" class="btn btn-primary text-white g font-weight-bold btn-lg btn-block">Agregar Refugio</button>
 </form>
