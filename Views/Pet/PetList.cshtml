@@ -1,0 +1,45 @@
+@model List<Mascota>
+
+<h1>Mascotas para Adopcion</h1>
+
+<form asp-action="PetList" method="get">
+    filtrar por tipo de mascota:
+    <select name="IdTipoMascota">
+        <option value="0">Todas las mascotas</option>
+        @foreach (var m in (List<TipoMascota>)ViewBag.tipo)
+        {
+            <option value="@m.IdTipoMascota">@m.Nombre</option>
+        }
+    </select>
+    <button>Filtrar</button>
+
+    @if(Model.Count == 0){
+        <p>Aun no hay mascotas para mostrar</p>
+    }
+
+    <div class="row">
+    @foreach (var m in (List<Mascota>)ViewBag.mascotas)  //para cada mascota se dibuja una iteracion
+    {
+        <div class="col-4">
+            @foreach (var f in m.FotosMascota)
+            {
+                <img src="@f.nombre"> // una imagen basica de la especie
+            }        
+            <p>@m.Nombre</p>
+            <p>@m.Sexo</p>
+            <p>@m.Tamaño</p>
+            <p>@m.PuedeEstarSolo</p>
+            <p>@m.Personalidades</p>
+            <p>@m.Edad</p>
+            <p>@m.Descripcion</p>
+            <p>@m.Direccion</p>
+            <p>@m.FechaRegistro</p>
+            <p>@m.IdTipoMascota</p>
+            <p>@m.IdRefugio</p>
+            <p>@m.Id</p>
+        </div>
+    }
+</div>
+
+
+</form>
