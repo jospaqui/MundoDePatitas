@@ -25,11 +25,11 @@ namespace Patitas.Controllers
     {
       ViewBag.especie = _context.TipoMascotas.ToList();
 
-      var especie = _context.TipoMascotas.Include(x => x.IdTipoMascota).ToList();
+      var especie = _context.TipoMascotas.ToList();
 
       if(especieID != 0)
       {
-        especie = _context.TipoMascotas.Include(x => x.IdTipoMascota).Where(x => x.IdTipoMascota == especieID).ToList();
+        especie = _context.TipoMascotas.Where(x => x.IdTipoMascota == especieID).ToList();
       }
       return View(especie);
     }
