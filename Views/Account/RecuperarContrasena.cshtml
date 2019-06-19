@@ -1,0 +1,35 @@
+@using Trabajo.ViewModels;
+@model modificarContrasenaViewModel
+
+@{
+    ViewBag.Titulo = "Modificar Contraseña";
+}
+<div class="card container container-fluid">
+    @if (Context.User.Identity.IsAuthenticated) {
+        <h2 class="text-center h1-responsive font-weight-bold my-4">Cambiar Contraseña</h2>
+        <form asp-action="modificarContrasena" method="post">
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-group">
+                <label>Contraseña actual:</label> 
+                <input asp-for="ContrasenaActual" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Contraseña nueva:</label> 
+                <input asp-for="ContrasenaNueva" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Confirmar Contraseña:</label>
+                <input asp-for="ContrasenaConfirmacion" class="form-control">
+            </div>
+            <div class="form-group ">
+                    <button class="btn text-white rgba-indigo-strong font-weight-bold" type="submit">Modificar Contraseña</button>
+            </div>
+        </form>
+    }else{
+        <h1>NO TIENE PERMISOS PARA VISUALIZAR ESTA PAGINA</h1>
+        <div class="container">
+            <img src="~/imagenes/error.png" alt="" >
+        </div>           
+    }
+</div>

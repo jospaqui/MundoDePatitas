@@ -34,10 +34,44 @@ namespace Patitas.Controllers
       return View();
     }
 
-        //ESTA ES LA FICHA DE REGISTRO para obtener los datos del adoptante
-        public IActionResult Register() {
+
+    [HttpPost]
+public IActionResult RecuperarContrasena(modificarContrasenaViewModel vm){
+    {
+     
+            if (ModelState.IsValid) {
+                
+                var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+                var resultado = _userManager.ChangePasswordAsync(user, vm.ContrasenaActual, vm.ContrasenaNueva);
+
+                if (resultado.Result == IdentityResult.Success) {
+                    
+                    return RedirectToAction("Index", "Home");
+                }
+                else {
+                    foreach (var error in resultado.Result.Errors) {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+               
+            }
+
+      return View();   
+    }
+    
+
+
+
+
+
+
+
+        //ESTA ES LA FICHA DE REGISTRO para obtener los datos del adoptant
+            public Register(){
+
             return View();
-         }
+            }
+
         [AllowAnonymous]
          [HttpPost]
          public IActionResult Register(RegisterViewModel model) {
