@@ -42,7 +42,7 @@
                         <img src="~/img/6.jpg" alt="Foto Perfil">
                     </div>
                     <div class="nombre-perfil">
-                       <p>Bienvenido <span>Admin</span>
+                       <p>Bienvenido <span>@Context.User.Identity.Name<br>
                         <br> <a asp-controller="Pet" asp-action="List" >Ver Mascotas<i class="fas fa-store"></i></a> </p> 
                     
                     </div>

@@ -8,6 +8,7 @@ namespace Patitas.Models
         [Key]
         public int IdFotoMascota { get; set; }
         public string nombre { get; set; }
+        public string ImgPath { get; set; }
 
         public int IdMascota { get; set; }
 

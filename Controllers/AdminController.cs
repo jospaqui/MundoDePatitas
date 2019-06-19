@@ -1,46 +1,96 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Patitas.Data;
 using Patitas.Models;
-namespace MundoDePatitas.Controllers
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Patitas.Controllers
 {
     public class AdminController:Controller
     {
       private MascotaContext _context; //el contexto 
+      private UserManager<IdentityUser> _userManager;
+      private SignInManager<IdentityUser> _signInManager;
+	    
+      
+        
+        public AdminController(
+            MascotaContext c,
+            UserManager<IdentityUser> um,
+            SignInManager<IdentityUser> sim
+        ){
+            _context=c;
+            _userManager=um;
+            _signInManager=sim;
 
-      public AdminController (MascotaContext c){ //el constructor del contexto
-            _context = c;
+        }
 
-      }
         public IActionResult Admin()
         {
           //TODO: Implement Realistic Implementation
           return View();
         }
-
-         public IActionResult AddPet()
+        public IActionResult AddPet()
         {
-            ViewBag.Mascota = _context.Mascotas.ToList();
+
+
+
+            ViewBag.TipoMascotas = _context.TipoMascotas.ToList();
 
             return View();
         }
 
-        [HttpPost]
-        public IActionResult AddPet(Mascota m)
+         [HttpPost]
+         public IActionResult AddPet(ViewModels.AddPetViewModel m) {
+            var IdUsuario = _userManager.Users.FirstOrDefault(u => u.Id == User.Identity.Name);
+            if (ModelState.IsValid) {
+                var pet = new Mascota { 
+                    Nombre= m.Nombre, 
+                    Sexo=m.Sexo,
+                    Tamaño=m.Tamaño,
+                    PuedeEstarSolo=m.PuedeEstarSolo,
+                    Personalidades=m.Personalidades,
+                    Edad=m.Edad,
+                    Descripcion=m.Descripcion,
+                    Direccion=m.Direccion,
+                    FechaRegistro=DateTime.Now,
+                    Estado=m.Estado,
+                    IdMascota=m.IdTipoMascota
+                    };
+                    
+                _context.Mascotas.Add(pet);
+                _context.SaveChanges();
+            }
+            else{
+              RedirectToAction("Home","Index");
+            }
+            ViewBag.TipoMascotas = _context.TipoMascotas.ToList();
+
+            return View(m);
+         }
+
+       
+        public IActionResult AddRefugio()
         {
-            if (ModelState.IsValid){
-                _context.Add(m);
+          //TODO: Implement Realistic Implementation
+          return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddRefugio(ViewModels.AddRefugioViewModel r) { 
+              if (ModelState.IsValid){
+                
+                _context.Add(r);
                 _context.SaveChanges();
 
                 return RedirectToAction("Admin","Admin");
             }
-            ViewBag.Mascota = _context.Mascotas.ToList();
 
             return View();
         }
+        
     }
 }

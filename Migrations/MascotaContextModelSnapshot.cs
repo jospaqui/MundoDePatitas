@@ -226,6 +226,8 @@ namespace Patitas.Migrations
 
                     b.Property<int>("IdMascota");
 
+                    b.Property<string>("ImgPath");
+
                     b.Property<string>("nombre");
 
                     b.HasKey("IdFotoMascota");

@@ -18,11 +18,17 @@ namespace Patitas.Controllers
 
         }
 
-        //registrar mascotas
-        public IActionResult RegisterPet(){
-            return View();
-        }
-       public IActionResult PetList()
+       public IActionResult AllPets()
+       {
+         //TODO: Implement Realistic Implementation
+         return View();
+       }
+       public IActionResult ViewPet()
+       {
+         //TODO: Implement Realistic Implementation
+         return View();
+       }
+       public IActionResult Categorias()
        {
          //TODO: Implement Realistic Implementation
          return View();

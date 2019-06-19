@@ -39,8 +39,6 @@ namespace Patitas.Models
 
         public ApplicationUser Id { get; set; }
 
-
-
         
     }
 }
