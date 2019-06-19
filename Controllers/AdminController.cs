@@ -29,16 +29,13 @@ namespace Patitas.Controllers
 
         }
 
-        public IActionResult Admin()
+        public IActionResult Dashboard()
         {
           //TODO: Implement Realistic Implementation
           return View();
         }
         public IActionResult AddPet()
         {
-
-
-
             ViewBag.TipoMascotas = _context.TipoMascotas.ToList();
 
             return View();

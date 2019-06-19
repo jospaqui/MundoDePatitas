@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mundo De Patitas</title>
+    <title>@ViewData["Title"] - Patitas</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -16,59 +16,139 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="~/libnt-face.css" rel="stylesheet" media="all">
+    <link href="~/lib/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/lib/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="~/lib/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
+    <link href="~/css/admin.css" rel="stylesheet" media="all">
+
 </head>
-<body>
-    
-    
 
-
-<div class="todo">
-    <div class="cabecera">
-            <div class="logo"> 
-                <img src="~/img/logo.png" alt="">
+<body class="animsition">
+    <div class="page-wrapper">
+        <aside class="menu-sidebar2">
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo.png" alt="Mundo De Patitas" />
+                </a>
             </div>
-            
-            <div class="foto-perfil1">
-                <img src="~/img/6.jpg" alt="Foto Perfil">
-                <div class="logout">
-                    <a asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"style="font-size:40px;color:#2C304D; margin-left: 10px;"> </i></a> 
+            <div class="menu-sidebar2__content js-scrollbar1">
+                <div class="account2">
+                    <div class="image img-cir img-120">
+                        <img src="~/img/avatar-big-01.jpg" alt="Avatar" />
+                    </div>
+                    <h4 class="name">@Context.User.Identity.Name</h4>
+                    <a asp-controller="Account" asp-action="Logout">Logout</a>
                 </div>
-            </div>    
-    </div>
-    <div class="bloque-cuerpo">
-        <div class="bloque-menu">
-                <div class="perfil">
-                    <div class="foto-perfil">
-                        <img src="~/img/6.jpg" alt="Foto Perfil">
+                <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a asp-controller="Admin" asp-action="Dashboard">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Admin" asp-action="Mensajes">
+                                <i class="fas fa-chart-bar"></i>Mensajes</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Admin" asp-action="Mascotas">
+                                <i class="fas fa-shopping-basket"></i>Mascotas</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="page-container2">
+            <header class="header-desktop2">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap2">
+                            <div class="logo d-block d-lg-none">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/img/logo.png" alt="Mundo De Patitas" />
+                                </a>
+                            </div>
+                            <div class="header-button2">
+                                <div class="header-button-item mr-0 js-sidebar-btn">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </div>
+                                <div class="setting-menu js-right-sidebar d-none d-lg-block">
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a asp-controller="Admin" asp-action="Perfil">
+                                                <i class="zmdi zmdi-account"></i>Mi Cuenta</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a asp-controller="Account" asp-action="ChangePassword">
+                                                <i class="zmdi zmdi-settings"></i>Cambiar Contraseña</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="nombre-perfil">
-                       <p>Bienvenido <span>@Context.User.Identity.Name<br>
-                        <br> <a asp-controller="Pet" asp-action="List" >Ver Mascotas<i class="fas fa-store"></i></a> </p> 
-                    
+                </div>
+            </header>
+            <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
+                <div class="logo">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img src="~/img/logo.png" alt="Mundo De Patitas" />
+                    </a>
+                </div>
+                <div class="menu-sidebar2__content js-scrollbar2">
+                    <div class="account2">
+                        <div class="image img-cir img-120">
+                            <img src="~/img/avatar-big-01.jpg" alt="Avatar" />
+                        </div>
+                        <h4 class="name">@Context.User.Identity.Name</h4>
+                        <a asp-controller="Account" asp-action="Logout"> Logout</a>
                     </div>
-                    <div class="tools">
-                        <ul>
-                            <li><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Principal</a> </li>
-                            <li><a asp-controller="Pet" asp-action="List"><i class="fas fa-wine-bottle"></i>Mascotas</a></li>                 
-                            <li><a asp-controller="Pet" asp-action="Adopciones"><i class="fab fa-opencart"></i> Adopciones</a></li>
-                            <li><a asp-controller="Account" asp-action="Users"><i class="fas fa-users"></i> Usuarios</a></li>
-                            <li><a asp-controller="Account" asp-action="ListaEspera"><i class="fas fa-mail-bulk"></i> Lista Espera</a></li>
-                            <li><a asp-controller="Account" asp-action="Mensajes"><i class="fas fa-envelope-open-text"></i>Mensajes</a></li>
+                    <nav class="navbar-sidebar2">
+                        <ul class="list-unstyled navbar__list">
+                            <li class="active has-sub">
+                                <a class="js-arrow" asp-controller="Admin" asp-action="Dashboard">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                                    <span class="arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            
+
+            @RenderBody()
+
+            <section>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2019 Mundo De Patitas</a>.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="content">
-                
-                @RenderBody()
-                
-            </div>
+            </section>
         </div>
-        
+
     </div>
 
-
-    
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -90,7 +170,22 @@
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://kit.fontawesome.com/8f1fbf8426.js"></script>
-
+    <script src="~/lib/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="~/lib/slick/slick.min.js"></script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/animsition/animsition.min.js"></script>
+    <script src="~/lib/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/lib/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/lib/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/lib/circle-progress/circle-progress.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/lib/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/vector-map/jquery.vmap.js"></script>
+    <script src="~/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="~/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="~/lib/vector-map/jquery.vmap.world.js"></script>
+    <script src="~/js/main.js"></script>
     @RenderSection("Scripts", required: false)
 
 </body>
