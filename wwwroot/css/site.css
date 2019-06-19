@@ -133,10 +133,10 @@ html {
     transition: .5s;
 }
 .mascotaview:hover .estado-mascota{
-    top: -100px;
+    top: -80px;
 }
 .mascotaview .estado-mascota{
-    top: 10%;
+    top: 30%;
     justify-content: center;
 }
 
@@ -151,18 +151,17 @@ html {
     color: #ccc;
     font-weight: normal;
 }
-.mascotaview .sexo{
+.mascotaview .nombrepet{
     
     font-weight: bold;
 }
 
 .mascotaview .mascota-info button{
     color: #fff;
-    margin: 15px 0 0;
     background: rgb(45, 200, 228);
     border-color: rgb(45, 200, 228);
     transition: .3s;
-    width: 95%;
+    width: 100%;
 }
 .mascotaview .mascota-info button:hover{
     color:#fff;
