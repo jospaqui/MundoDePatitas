@@ -1,8 +1,10 @@
-@model List<Mascota>
 @{
     ViewBag.Title = "Panel de administracion";
     Layout = "~/Views/Shared/_admin.cshtml";
+
+    var Mascota=(List<Mascota>)ViewBag.MascotasLista;
 }
+
 
 <section>
 <div class="row">
@@ -12,7 +14,7 @@
                                     <div class="table-data__tool-right">
                                     
                                         <button type="button" data-toggle="modal" data-target="#exampleModalCenter"class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <a asp-controller="Admin" asp-action="AddVeterinaria">
+                                            <a asp-controller="Admin" asp-action="AddPet">
                                             <i class="zmdi zmdi-plus"></i>Añadir Mascota</a></button>
                                     </div>
                                 </div>
@@ -35,7 +37,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach(var m in Model) {
+                                        @foreach(var m in Mascota) {
 
                                             <tr class="tr-shadow">
                                                 <td>
@@ -44,11 +46,11 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td class="desc">@m.IdMascota</td>
+                                                <td class="desc">@m.Id</td>
                                                 <td>@m.Nombre</td>
                                                 <td>@m.Sexo</td>
                                                 <td>
-                                                    <span class="block-email">@m.IdTipoMascota</span>
+                                                    <span class="block-email">@m.TipoMascota.Id</span>
                                                 </td>
                                                 <td >@m.Estado</td>
                                                 <td >@m.FechaRegistro</td>

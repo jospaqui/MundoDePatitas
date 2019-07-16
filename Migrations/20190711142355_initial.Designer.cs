@@ -9,8 +9,8 @@ using Patitas.Data;
 namespace Patitas.Migrations
 {
     [DbContext(typeof(MascotaContext))]
-    [Migration("20190619190537_fotosmascota")]
-    partial class fotosmascota
+    [Migration("20190711142355_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -185,10 +185,36 @@ namespace Patitas.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("MundoDePatitas.Models.Archivo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ApplicationUserId");
+
+                    b.Property<string>("ApplicationUserId1");
+
+                    b.Property<int?>("MascotaId");
+
+                    b.Property<string>("Nombre");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId1");
+
+                    b.HasIndex("MascotaId");
+
+                    b.ToTable("Archivos");
+                });
+
             modelBuilder.Entity("Patitas.Models.Adopcion", b =>
                 {
-                    b.Property<int>("IdAdoptante")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AplicationUserId");
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<string>("DNI");
 
@@ -196,18 +222,16 @@ namespace Patitas.Migrations
 
                     b.Property<DateTime>("FechaAdop");
 
-                    b.Property<string>("Id1");
+                    b.HasKey("Id");
 
-                    b.HasKey("IdAdoptante");
-
-                    b.HasIndex("Id1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Adopciones");
                 });
 
             modelBuilder.Entity("Patitas.Models.Anuncio", b =>
                 {
-                    b.Property<int>("IdAnuncio")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Contenido");
@@ -216,14 +240,14 @@ namespace Patitas.Migrations
 
                     b.Property<DateTime>("FechaInicio");
 
-                    b.HasKey("IdAnuncio");
+                    b.HasKey("Id");
 
                     b.ToTable("Anuncios");
                 });
 
             modelBuilder.Entity("Patitas.Models.ListaEspera", b =>
                 {
-                    b.Property<int>("IdListaEspera")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Apellidos");
@@ -236,14 +260,14 @@ namespace Patitas.Migrations
 
                     b.Property<string>("TipoMascota");
 
-                    b.HasKey("IdListaEspera");
+                    b.HasKey("Id");
 
                     b.ToTable("ListaDeEspera");
                 });
 
             modelBuilder.Entity("Patitas.Models.Mascota", b =>
                 {
-                    b.Property<int>("IdMascota")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Descripcion");
@@ -258,14 +282,6 @@ namespace Patitas.Migrations
 
                     b.Property<DateTime>("FechaRegistro");
 
-                    b.Property<string>("FotoMascota");
-
-                    b.Property<string>("Id1");
-
-                    b.Property<int>("IdRefugio");
-
-                    b.Property<int>("IdTipoMascota");
-
                     b.Property<string>("Nombre")
                         .IsRequired();
 
@@ -275,26 +291,28 @@ namespace Patitas.Migrations
                     b.Property<string>("PuedeEstarSolo")
                         .IsRequired();
 
+                    b.Property<int>("RefugioId");
+
                     b.Property<string>("Sexo")
                         .IsRequired();
 
                     b.Property<string>("Tamaño")
                         .IsRequired();
 
-                    b.HasKey("IdMascota");
+                    b.Property<int>("TipoMascotaId");
 
-                    b.HasIndex("Id1");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IdRefugio");
+                    b.HasIndex("RefugioId");
 
-                    b.HasIndex("IdTipoMascota");
+                    b.HasIndex("TipoMascotaId");
 
                     b.ToTable("Mascotas");
                 });
 
             modelBuilder.Entity("Patitas.Models.Mensaje", b =>
                 {
-                    b.Property<int>("IdMensaje")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Asunto");
@@ -309,43 +327,43 @@ namespace Patitas.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("IdMensaje");
+                    b.HasKey("Id");
 
                     b.ToTable("Mensajes");
                 });
 
             modelBuilder.Entity("Patitas.Models.Pregunta", b =>
                 {
-                    b.Property<int>("IdPregunta")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AplicationUserId");
+
+                    b.Property<string>("AplicationUserId1");
 
                     b.Property<string>("Contenido");
 
                     b.Property<DateTime>("Fecha");
 
-                    b.Property<string>("Id1");
+                    b.Property<int>("MascotaId");
 
-                    b.Property<int>("IdMascota");
+                    b.HasKey("Id");
 
-                    b.HasKey("IdPregunta");
+                    b.HasIndex("AplicationUserId1");
 
-                    b.HasIndex("Id1");
-
-                    b.HasIndex("IdMascota");
+                    b.HasIndex("MascotaId");
 
                     b.ToTable("Preguntas");
                 });
 
             modelBuilder.Entity("Patitas.Models.Refugio", b =>
                 {
-                    b.Property<int>("IdRefugio")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
 
                     b.Property<DateTime>("FechaDeCreacion");
-
-                    b.Property<string>("Id1");
 
                     b.Property<string>("Logo");
 
@@ -355,16 +373,14 @@ namespace Patitas.Migrations
 
                     b.Property<string>("Ubicacion");
 
-                    b.HasKey("IdRefugio");
-
-                    b.HasIndex("Id1");
+                    b.HasKey("Id");
 
                     b.ToTable("Refugios");
                 });
 
             modelBuilder.Entity("Patitas.Models.TipoMascota", b =>
                 {
-                    b.Property<int>("IdTipoMascota")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Descripcion");
@@ -373,14 +389,14 @@ namespace Patitas.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("IdTipoMascota");
+                    b.HasKey("Id");
 
                     b.ToTable("TipoMascotas");
                 });
 
             modelBuilder.Entity("Patitas.Models.Veterinaria", b =>
                 {
-                    b.Property<int>("IdVeterinaria")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Direccion");
@@ -393,7 +409,7 @@ namespace Patitas.Migrations
 
                     b.Property<int>("Telefono");
 
-                    b.HasKey("IdVeterinaria");
+                    b.HasKey("Id");
 
                     b.ToTable("Veterinarias");
                 });
@@ -458,47 +474,47 @@ namespace Patitas.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("MundoDePatitas.Models.Archivo", b =>
+                {
+                    b.HasOne("Patitas.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Archivos")
+                        .HasForeignKey("ApplicationUserId1");
+
+                    b.HasOne("Patitas.Models.Mascota", "Mascota")
+                        .WithMany("Archivos")
+                        .HasForeignKey("MascotaId");
+                });
+
             modelBuilder.Entity("Patitas.Models.Adopcion", b =>
                 {
-                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
-                        .WithMany("Adopcion")
-                        .HasForeignKey("Id1");
+                    b.HasOne("Patitas.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Adopciones")
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Patitas.Models.Mascota", b =>
                 {
-                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
-                        .WithMany("Mascota")
-                        .HasForeignKey("Id1");
-
-                    b.HasOne("Patitas.Models.Refugio")
-                        .WithMany("Mascota")
-                        .HasForeignKey("IdRefugio")
+                    b.HasOne("Patitas.Models.Refugio", "Refugio")
+                        .WithMany("Mascotas")
+                        .HasForeignKey("RefugioId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Patitas.Models.TipoMascota")
-                        .WithMany("Mascota")
-                        .HasForeignKey("IdTipoMascota")
+                    b.HasOne("Patitas.Models.TipoMascota", "TipoMascota")
+                        .WithMany("Mascotas")
+                        .HasForeignKey("TipoMascotaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Patitas.Models.Pregunta", b =>
                 {
-                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
-                        .WithMany("Pregunta")
-                        .HasForeignKey("Id1");
+                    b.HasOne("Patitas.Models.ApplicationUser", "AplicationUser")
+                        .WithMany("Preguntas")
+                        .HasForeignKey("AplicationUserId1");
 
-                    b.HasOne("Patitas.Models.Mascota")
-                        .WithMany("Pregunta")
-                        .HasForeignKey("IdMascota")
+                    b.HasOne("Patitas.Models.Mascota", "Mascota")
+                        .WithMany("Preguntas")
+                        .HasForeignKey("MascotaId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Patitas.Models.Refugio", b =>
-                {
-                    b.HasOne("Patitas.Models.ApplicationUser", "Id")
-                        .WithMany("Refugio")
-                        .HasForeignKey("Id1");
                 });
 #pragma warning restore 612, 618
         }

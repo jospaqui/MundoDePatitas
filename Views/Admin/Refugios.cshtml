@@ -1,7 +1,7 @@
-@model List<Refugio>
 @{
     ViewBag.Title = "Panel de administracion";
     Layout = "~/Views/Shared/_admin.cshtml";
+    var Refugio=(List<Refugio>)ViewBag.Refugio;
 }
 
 <section>
@@ -15,8 +15,8 @@
                                         
                                     </div>
                                 </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                <div class="table-responsive table-responsive-data2 text-nowrap">
+                                    <table class="table table-data2 table-striped">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -35,7 +35,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach(var r in Model) {
+                                        @foreach(var r in Refugio) {
 
                                             <tr class="tr-shadow">
                                                 <td>
@@ -44,7 +44,7 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td class="desc">@r.IdRefugio</td>
+                                                <td class="desc">@r.Id</td>
                                                 <td>@r.Nombre</td>
                                                 <td>@r.Ubicacion</td>
                                                 <td>
@@ -53,7 +53,8 @@
                                                 <td >@r.Telefono</td>
                                                 <td>@r.FechaDeCreacion</td>
                                                 <td>
-                                                    <span class="status--process">@r.Logo</span>
+                                                    <span class="status--process">
+                                                    <img src="@r.Logo" alt="" sizes="10" srcset=""></span>
                                                 </td>
                                                 <td>
                                                     <div class="table-data-feature">

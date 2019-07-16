@@ -2,12 +2,14 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using MundoDePatitas.Models;
+
 namespace Patitas.Models
 {
-    public partial class Mascota
+    public class Mascota
     {
-        [Key]
-        public int IdMascota { get; set; }
+        
+        public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
         [Required]
@@ -20,7 +22,6 @@ namespace Patitas.Models
         public string Personalidades { get; set; }
         [Required]
         public int Edad { get; set; }
-        public string FotoMascota { get; set; }
 
         public string Descripcion { get; set; }
         [Required]
@@ -29,12 +30,17 @@ namespace Patitas.Models
         [Required]
         public string Estado { get; set; }
 
-        public int IdTipoMascota { get; set; }
+
+        public List<Archivo> Archivos { get; set; }
+
+        public TipoMascota TipoMascota { get; set; }
+        public int TipoMascotaId { get; set; }
 
 
-        public virtual List<Pregunta> Pregunta { get; set; }
+        public List<Pregunta> Preguntas { get; set; }
 
-
+        public Refugio Refugio { get; set; }
+        public int RefugioId { get; set; }
 
 
         

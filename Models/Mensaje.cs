@@ -6,8 +6,8 @@ namespace Patitas.Models
 {
     public partial class Mensaje
     {
-        [Key]
-        public int IdMensaje { get; set; }
+        
+        public int Id{ get; set; }
         public string Nombre { get; set; }
         public string Asunto { get; set; }
         public string Contenido { get; set; }

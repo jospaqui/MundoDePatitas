@@ -29,7 +29,7 @@ namespace Patitas.Controllers
 
       if(especieID != 0)
       {
-        especie = _context.TipoMascotas.Where(x => x.IdTipoMascota == especieID).ToList();
+        especie = _context.TipoMascotas.Where(x => x.Id== especieID).ToList();
       }
       return View(especie);
     }

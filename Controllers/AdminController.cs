@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Patitas.Data;
 using Patitas.Models;
 
@@ -28,19 +30,18 @@ namespace Patitas.Controllers
 
         public IActionResult Dashboard()
         {
-          //TODO: Implement Realistic Implementation
+
+          ViewBag.Mascotas=_context.Mascotas.Count();
           return View();
         }
         public IActionResult AddPet()
         {
-            ViewBag.TipoMascotas = _context.TipoMascotas.ToList();
 
             return View();
         }
 
          [HttpPost]
          public IActionResult AddPet(ViewModels.AddPetViewModel m) {
-            var IdUsuario = _userManager.Users.FirstOrDefault(u => u.Id == User.Identity.Name);
             if (ModelState.IsValid) {
                 var pet = new Mascota { 
                     Nombre= m.Nombre, 
@@ -53,16 +54,19 @@ namespace Patitas.Controllers
                     Direccion=m.Direccion,
                     FechaRegistro=DateTime.Now,
                     Estado=m.Estado,
-                    IdMascota=m.IdTipoMascota
+                    TipoMascotaId=m.TipoMascotaId,
+                    RefugioId=m.RefugioId
+                    
                     };
                     
                 _context.Mascotas.Add(pet);
                 _context.SaveChanges();
+             return RedirectToAction("Pets","Admin");
+
             }
-            else{
-              RedirectToAction("Home","Index");
-            }
-            
+            int userId =Int32.Parse(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            ViewBag.Refugio = _context.Refugios.Where(x=>x.Id==userId);
+
             return View(m);
          }
 
@@ -80,14 +84,14 @@ namespace Patitas.Controllers
                 _context.Add(r);
                 _context.SaveChanges();
 
-                return RedirectToAction("Admin","Admin");
+                return RedirectToAction("Refugios","Admin");
             }
 
             return View();
         }
         public IActionResult Refugios(){
-          var Refugio = _context.Refugios.ToList();
-          return View(Refugio);
+          ViewBag.Refugio = _context.Refugios.ToList();
+          return View();
         }
         public IActionResult Veterinarias(){
           var Veterinaria = _context.Veterinarias.ToList();
@@ -110,8 +114,13 @@ namespace Patitas.Controllers
         }
         public IActionResult Pets()
         {
-          var Mascota = _context.Mascotas.ToList();
-          return View(Mascota);
+          ViewBag.MascotasLista=_context.Mascotas.Include(x=>x.TipoMascota).ToList();
+
+          return View();
+        }
+        public IActionResult Users()
+        {
+          return View();
         }
     }
 }

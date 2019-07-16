@@ -8,7 +8,7 @@
         <option value="0">Todas las mascotas</option>
         @foreach (var m in (List<TipoMascota>)ViewBag.tipo)
         {
-            <option value="@m.IdTipoMascota">@m.Nombre</option>
+            <option value="@m.Id">@m.Nombre</option>
         }
     </select>
     <button>Filtrar</button>
@@ -21,7 +21,6 @@
     @foreach (var m in (List<Mascota>)ViewBag.mascotas)  //para cada mascota se dibuja una iteracion
     {
         <div class="col-4">
-            <p>@m.FotoMascota</p>  
             <p>@m.Nombre</p>
             <p>@m.Sexo</p>
             <p>@m.Tamaño</p>
@@ -31,7 +30,7 @@
             <p>@m.Descripcion</p>
             <p>@m.Direccion</p>
             <p>@m.FechaRegistro</p>
-            <p>@m.IdTipoMascota</p>
+            <p>@m.Id</p>
         </div>
     }
 </div>

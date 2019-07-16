@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Patitas.Models;
 using Microsoft.AspNetCore.Identity;
+using MundoDePatitas.Models;
 
 namespace Patitas.Data
 {
@@ -18,6 +19,7 @@ namespace Patitas.Data
         public DbSet<Refugio> Refugios { get; set; }
         public DbSet<TipoMascota> TipoMascotas { get; set; }
         public DbSet<Veterinaria> Veterinarias { get; set; }
+        public DbSet<Archivo> Archivos { get; set; }
 
      
 

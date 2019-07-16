@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
-
+using System.IO;
+using MundoDePatitas.Models;
 
 namespace Patitas.Models
 {
@@ -16,15 +17,11 @@ namespace Patitas.Models
         public DateTime FechaDeRegistro { get; set; }
         public string Sexo { get; set; }
 
+        public List<Pregunta> Preguntas { get; set; }
 
-        
+        public List<Adopcion> Adopciones { get; set; }
 
-
-        public virtual List<Pregunta> Pregunta { get; set; }
-
-        public virtual List<Adopcion> Adopcion { get; set; }
-
-    
+        public List<Archivo> Archivos { get; set; }
 
     }
 }
