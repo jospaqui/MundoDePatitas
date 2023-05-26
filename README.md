@@ -3,7 +3,7 @@
 ## Bloque: _FC-PREINF04B1T_
 ## Integrantes: ##  
   1. Falla Guiulfo Luis Mauricio
-  2. Paquiyauri Marcas Jose Luis
+  2. Paquiyauri Jose Luis
   3. Otayza Grados Adela Gabriela  
  
 ## Tema Propuesto: ##  
